@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { ReactComponent as ShoppingIcon } from "../Icons/shopping.svg";
+import CartWidget from "./CartWidget";
 import "./NavBar.css";
 
 const NavBar = ({ menuItems }) => {
@@ -20,21 +20,8 @@ const NavBar = ({ menuItems }) => {
                 </Nav.Link>
               );
             })}
-            <NavDropdown title="IA" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">
-                Algoritmos Geneticos
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Optimizacion Cumulo de Particulas
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                Evolucion Diferencial
-              </NavDropdown.Item>
-            </NavDropdown>
           </Nav>
-          <Nav className="container-shopp-car">
-            <ShoppingIcon width={30} height={30} fill="red" />
-          </Nav>
+          <CartWidget />
         </Navbar.Collapse>
       </Container>
     </Navbar>
