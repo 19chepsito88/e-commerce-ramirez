@@ -1,10 +1,10 @@
 import React from 'react'
 
 const ItemListContainer = ({
-    title
+    greeting
 }) => {
   return (
-    <div>{title}</div>
+    <div>{greeting}</div>
   )
 }
 
