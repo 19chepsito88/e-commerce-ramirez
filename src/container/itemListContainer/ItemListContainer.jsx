@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ItemList from "../../ItemList";
-import { getFetch } from "../../../helpers/getFetch";
-import { Container, Row, Spinner } from "react-bootstrap";
+import ItemList from "../../components/ItemList/ItemList";
+import { getFetch } from "../../helpers/getFetch";
+import { Container, Spinner } from "react-bootstrap";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +15,7 @@ const ItemListContainer = () => {
   }, []);
 
   return (
-    <Container >
+    <Container fluid className={`${loading?'text-center':null}`}>
       {loading ? (
         <Spinner animation="grow" className="loading-item" />
       ) : (

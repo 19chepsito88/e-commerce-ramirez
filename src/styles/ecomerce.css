@@ -1,0 +1,149 @@
+body {
+    user-select: none;
+}
+
+.row-container {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+/*Card product*/
+
+.card-product {
+    margin-top: 15px;
+    padding: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-product-image {
+    height: 300px;
+}
+
+.card-product-body {
+    color: rgb(17, 3, 3);
+    font: bold 18px Montserrat;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-image: url(../images/69adc4a1c63f959ede0dd4c1caa10cce.jpg);
+}
+
+.item-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*Item Detail*/
+
+.container-item-detail {
+    margin: 10px 11px 15px 15px;
+    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.col-picture {
+    overflow: hidden;
+}
+
+.zoom {
+    transition: transform .2s;
+    cursor: zoom-in;
+}
+
+.zoom:hover {
+    transform: scale(2.5);
+}
+
+.img-detail {
+    width: 300px;
+    height: 300px;
+    margin-top: 30px;
+}
+
+.title-product {
+    padding: 10px;
+    font-size: 1.5625rem;
+    line-height: 1.1;
+    background-color: #ec8916;
+}
+
+.price-product,
+.description-product {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Circular-Book;
+    color: #8e8f93;
+}
+
+.price-product>span {
+    color: #eb0042;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.description-product {
+    text-align: justify;
+}
+
+.description-product>span {
+    color: black;
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
+.footer-detail {
+    display: flex;
+    justify-content: flex-end;
+    margin-top:15%;
+}
+
+/*Item Count*/
+.item-count-container,
+.item-count-controls-container {
+    display: flex;
+}
+
+.item-count-container,
+.item-count-controls-container {
+    flex-direction: row;
+}
+
+.item-count-container {
+    align-items: center;
+}
+
+.item-count-controls-container {
+    margin-right: 50px;
+}
+
+.icon-count {
+    cursor: pointer;
+    fill: black;
+    height: 25px;
+    width: 25px;
+}
+
+.icon-count:hover {
+    fill: #85C1E9;
+}
+
+.item-count-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: #85C1E9;
+    border: 1px solid rgb(131, 131, 201);
+    user-select: none;
+}
+
+
+.loading-item {
+    margin-top: 250px;
+}

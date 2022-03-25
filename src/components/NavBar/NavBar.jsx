@@ -9,13 +9,13 @@ const NavBar = ({ menuItems }) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">E-Commerce-Ramirez</Navbar.Brand>
+        <Navbar.Brand href="/">E-Commerce-Ramirez</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {menuItems.map((item) => {
               return (
-                <Nav.Link href="#features" key={item.id}>
+                <Nav.Link href={item.path} key={item.id}>
                   {item.name}
                 </Nav.Link>
               );

@@ -14,7 +14,7 @@ const ItemCount = ({ stock, initial }) => {
     increment(1);
   };
   const onDecrement = () => {
-    counter > 0 && decrement(1);
+    counter > 1 && decrement(1);
   };
 
   const onAdd = () => {
@@ -24,7 +24,7 @@ const ItemCount = ({ stock, initial }) => {
   return (
     <div className="item-count-container">
       <div className="item-count-controls-container">
-        <UpIcon className="icon-count m-b-5" onClick={onIncrement} />
+        <UpIcon className="icon-count" onClick={onIncrement} />
         <span className="item-count-text">{counter}</span>
         <DownIcon className="icon-count" onClick={onDecrement} />
       </div>

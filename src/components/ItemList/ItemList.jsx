@@ -1,14 +1,13 @@
-import React from "react";
 import { Col, Row } from "react-bootstrap";
-import Item from "./Item";
+import Item from "../Item/Item";
 const ItemList = ({ products }) => {
   return (
-    <Row className="row-container-item">
+    <Row className="row-container">
       {products.map((item) => {
         return (
-          <Col md={3}>
+          <Col md={3} key={item.id}>
             <Item
-              title={item.title}
+              name={item.name}
               picture={item.picture}
               stock={item.stock}
               precio={item.precio}
