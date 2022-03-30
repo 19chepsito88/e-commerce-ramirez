@@ -1,20 +1,36 @@
 import { useEffect, useState } from "react";
-import { getFetch } from "../../helpers/getFetch";
+import {getProductById} from '../../actions/products'
 import ItemDetail from "../../components/itemDetail/ItemDetail";
 import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-const ItemDetailContainer = () => {
-  const [product, setProduct] = useState();
-  const [loading, setLoading] = useState(true);
+const ItemDetailContainer = ({
+  product,
+  getProductById
+}) => {
+
+  const {detailId}=useParams();
   useEffect(() => {
-    getFetch
-      .then((resp) => setProduct(resp.find((product) => product.id === "1")))
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+    getProductById(detailId)
   }, []);
+
   return (
     <Container fluid>{product && <ItemDetail product={product} />}</Container>
   );
 };
 
-export default ItemDetailContainer;
+const mapStateToProps = (state) => ({
+  product: state.products.product,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getProductById
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDetailContainer);

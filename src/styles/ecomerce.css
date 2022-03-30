@@ -147,3 +147,10 @@ body {
 .loading-item {
     margin-top: 250px;
 }
+
+
+.logo-store{
+    width: 135px;
+    height: 48px;
+    margin-left: -70px;
+}

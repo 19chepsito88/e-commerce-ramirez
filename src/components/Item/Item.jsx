@@ -1,7 +1,8 @@
 import { Card } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "./Item.css";
 
-const ItemList = ({ name, picture, stock }) => {
+const ItemList = ({ id,name, picture, stock }) => {
   return (
     <>
       <Card className="card-product">
@@ -14,6 +15,13 @@ const ItemList = ({ name, picture, stock }) => {
           <Card.Title className="item-name">{name}</Card.Title>
           <Card.Text>{`Disponibles ${stock}`}</Card.Text>
         </Card.Body>
+        <Card.Footer>
+          <NavLink to={`/detail/${id}`}>
+            <button className="btn btn-outline-primary btn-block">
+              detalle
+            </button>
+          </NavLink>
+        </Card.Footer>
       </Card>
     </>
   );
