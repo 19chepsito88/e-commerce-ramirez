@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
-import {getProductById} from '../../actions/products'
+import { getProductById } from "../../actions/products";
 import ItemDetail from "../../components/itemDetail/ItemDetail";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-const ItemDetailContainer = ({
-  product,
-  getProductById
-}) => {
-
-  const {detailId}=useParams();
+const ItemDetailContainer = ({ product, getProductById }) => {
+  const { detailId } = useParams();
   useEffect(() => {
-    getProductById(detailId)
+    getProductById(detailId);
   }, []);
 
   return (
-    <Container fluid>{product && <ItemDetail product={product} />}</Container>
+    <Container fluid>
+      {product && (
+        <>
+          <ItemDetail product={product} />
+        </>
+      )}
+    </Container>
   );
 };
 
@@ -28,9 +30,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      getProductById
+      getProductById,
     },
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemDetailContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemDetailContainer);

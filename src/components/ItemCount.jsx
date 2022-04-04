@@ -2,10 +2,9 @@ import React from "react";
 import { useCounter } from "../hooks/useCounter";
 import { ReactComponent as UpIcon } from "./Icons/up.svg";
 import { ReactComponent as DownIcon } from "./Icons/down.svg";
-import { ReactComponent as AddIcon } from "./Icons/add.svg";
 import { Button } from "react-bootstrap";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial,onAdd }) => {
   const { counter, increment, decrement, reset } = useCounter(initial);
 
   const disable = counter > stock;
@@ -17,9 +16,9 @@ const ItemCount = ({ stock, initial }) => {
     counter > 1 && decrement(1);
   };
 
-  const onAdd = () => {
-    alert(`Total de compra ${counter}`);
-  };
+  const onClickAdd=()=>{
+    onAdd(counter)
+  }
 
   return (
     <div className="item-count-container">
@@ -31,7 +30,7 @@ const ItemCount = ({ stock, initial }) => {
       <Button
         className=" "
         disabled={disable}
-        onClick={onAdd}
+        onClick={onClickAdd}
         variant="primary"
       >
         Agregar
