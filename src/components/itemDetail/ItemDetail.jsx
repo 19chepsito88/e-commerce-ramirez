@@ -1,5 +1,6 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useCartContext } from "../../context/CartContext";
 
 import ItemCount from "../ItemCount";
 import InputCount from "./componentes/InputCount";
@@ -7,10 +8,13 @@ import InputCount from "./componentes/InputCount";
 const ItemDetail = ({ product }) => {
   const [inputType, setInputType] = useState("button");
 
+  const { addToCart } = useCartContext();
+
   const onAdd = (cant) => {
     setInputType("input");
-    console.log(cant);
+    addToCart({...product,cantidad:cant})
   };
+
   return (
     <Row className="container-item-detail">
       <Col className="text-center col-picture" md={6}>

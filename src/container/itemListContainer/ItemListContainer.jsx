@@ -5,15 +5,15 @@ import { useParams } from "react-router-dom";
 import { getproducts, getProductFilter } from "../../actions/products";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-
+import { createContext } from "react";
+export const contextItemListContainer = createContext([]);
 const ItemListContainer = ({
   products,
   getproducts,
   productsFilter,
   getProductFilter,
-  loading
+  loading,
 }) => {
-
   const { categoryId } = useParams();
 
   useEffect(() => {
@@ -25,19 +25,23 @@ const ItemListContainer = ({
   }, [categoryId]);
 
   return (
-    <Container fluid className={`${loading ? "text-center" : null}`}>
-      {loading ? (
-        <Spinner animation="grow" className="loading-item" />
-      ) : (
-        <ItemList products={productsFilter?productsFilter:products} />
-      )}
-    </Container>
+    <contextItemListContainer.Provider value={{
+      products:productsFilter ? productsFilter : products
+    }}>
+      <Container fluid className={`${loading ? "text-center" : null}`}>
+        {loading ? (
+          <Spinner animation="grow" className="loading-item" />
+        ) : (
+          <ItemList  />
+        )}
+      </Container>
+    </contextItemListContainer.Provider>
   );
 };
 
 const mapStateToProps = (state) => ({
   products: state.products.products,
-  productsFilter:state.products.productsFilter,
+  productsFilter: state.products.productsFilter,
   loading: state.products.loading,
 });
 

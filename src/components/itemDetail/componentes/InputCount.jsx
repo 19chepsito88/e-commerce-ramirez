@@ -6,7 +6,6 @@ const InputCount = () => {
       <Link to="/cart">
         <button
           className="btn btn-outline-primary"
-          onClick={() => console.log("ir a cart")}
         >
           Ir al Cart o Terminar compra
         </button>
@@ -14,7 +13,6 @@ const InputCount = () => {
       <Link to="/">
         <button
           className="btn btn-outline-primary"
-          onClick={() => console.log("ir a cart")}
         >
           Seguir comprando
         </button>
