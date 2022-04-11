@@ -164,3 +164,14 @@ body {
     margin-top: 30px;
     width: 80%;
 }
+
+
+.container-cantidad{
+    margin-left: 15px;
+    padding: 2px;
+    border-radius: 2px;
+    text-decoration: none !important;
+    list-style: none;
+    color: white;
+    background-color: red;
+}

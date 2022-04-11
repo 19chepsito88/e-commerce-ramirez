@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -15,7 +15,6 @@ const ItemListContainer = ({
   loading,
 }) => {
   const { categoryId } = useParams();
-
   useEffect(() => {
     if (categoryId) {
       getProductFilter(categoryId);
@@ -25,14 +24,16 @@ const ItemListContainer = ({
   }, [categoryId]);
 
   return (
-    <contextItemListContainer.Provider value={{
-      products:productsFilter ? productsFilter : products
-    }}>
-      <Container fluid className={`${loading ? "text-center" : null}`}>
+    <contextItemListContainer.Provider
+      value={{
+        products: productsFilter ? productsFilter : products,
+      }}
+    >
+      <Container fluid className={loading ? "text-center" : null}>
         {loading ? (
           <Spinner animation="grow" className="loading-item" />
         ) : (
-          <ItemList  />
+          <ItemList />
         )}
       </Container>
     </contextItemListContainer.Provider>

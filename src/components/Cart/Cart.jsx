@@ -1,47 +1,75 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Card, Col, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ReactComponent as DeleteIcon } from "../Icons/delete.svg";
 import { useCartContext } from "../../context/CartContext";
 
 const Cart = () => {
-  const { cartList, removeCart, removeItem } = useCartContext();
+  const { cartList, removeCart, removeItem, totalCompra } = useCartContext();
   const resetCart = () => {
     removeCart();
   };
-  
+
   return (
     <div className="container-cart">
-      <Table  striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartList.map((prod,id) => (
-            <tr key={prod.id}>
-              <td>{id+1}</td>
-              <td>{prod.name}</td>
-              <td>{`$ ${prod.precio}.00`}</td>
-              <td>{prod.cantidad}</td>
-              <td><button onClick={()=>removeItem(prod.id)}></button></td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      <div>
-      {
-       cartList.length > 0 ?
-       <button onClick={resetCart}>Vaciar Carrito</button>
-       :
-       <Link to="/">
-         <button >Regresar</button>
-      </Link>
-      }
-      </div>
+      {cartList.length > 0 ? (
+        <Row>
+          <Col md={8}>
+            {
+              <Row>
+                {cartList.map((prod) => {
+                  return (
+                    <Row>
+                      <Col md={4}>
+                        <Card.Img
+                          className="card-product-image"
+                          variant="top"
+                          src={require(`../../images/${prod.picture}.jpg`)}
+                        />
+                      </Col>
+                      <Col>
+                        <h2>{prod.name}</h2>
+                        <Table striped bordered hover size="sm">
+                          <thead>
+                            <tr>
+                              <th>Precio</th>
+                              <th>Cantidad</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr key={prod.id}>
+                              <td>{`$ ${prod.precio}.00`}</td>
+                              <td>{prod.cantidad}</td>
+                              <td>
+                                <DeleteIcon
+                                  onClick={() => removeItem(prod.id)}
+                                />
+                              </td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                      </Col>
+                    </Row>
+                  );
+                })}
+              </Row>
+            }
+          </Col>
+          <Col md={4}>
+            <h2>Total :{totalCompra()}</h2>
+            <div>
+              <button onClick={resetCart}>Vaciar Carrito</button>
+            </div>
+          </Col>
+        </Row>
+      ) : (
+        <>
+          <h2>Usted no tiene productos</h2>
+          <Link to="/">
+            <button>Comprar ahora</button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

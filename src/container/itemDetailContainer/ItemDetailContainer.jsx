@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import { getProductById } from "../../actions/products";
 import ItemDetail from "../../components/itemDetail/ItemDetail";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const ItemDetailContainer = ({ product, getProductById }) => {
   const { detailId } = useParams();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getProductById(detailId);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
 
   return (
-    <Container fluid>
-      {product && (
-        <>
-          <ItemDetail product={product} />
-        </>
+    <Container fluid className={loading ? "text-center" : null}>
+      {loading ? (
+        <Spinner animation="grow" className="loading-item" />
+      ) : (
+        product && <ItemDetail product={product} />
       )}
     </Container>
   );

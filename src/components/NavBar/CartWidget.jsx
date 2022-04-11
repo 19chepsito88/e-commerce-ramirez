@@ -3,7 +3,7 @@ import "./NavBar.css";
 const CartWidget = () => {
   return (
     <div className="container-shopp-car">
-      <ShoppingIcon width={30} height={30} fill="red" />
+      <ShoppingIcon width={30} height={30} fill="red"  />
     </div>
   );
 };

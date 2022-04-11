@@ -1,10 +1,9 @@
-import { useContext } from "react";
+import { memo } from "react";
 import { Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "./Item.css";
 
-const ItemList = ({ id, name, picture, stock }) => {
-
+const ItemList = memo(({ id, name, picture, stock }) => {
   return (
     <>
       <Card className="card-product">
@@ -27,6 +26,6 @@ const ItemList = ({ id, name, picture, stock }) => {
       </Card>
     </>
   );
-};
+});
 
 export default ItemList;
