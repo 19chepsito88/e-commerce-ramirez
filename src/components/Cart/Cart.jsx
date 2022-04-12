@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row, Table } from "react-bootstrap";
+import { Button, Card, Col, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ReactComponent as DeleteIcon } from "../Icons/delete.svg";
 import { useCartContext } from "../../context/CartContext";
@@ -58,7 +58,7 @@ const Cart = () => {
           <Col md={4}>
             <h2>Total :{totalCompra()}</h2>
             <div>
-              <button onClick={resetCart}>Vaciar Carrito</button>
+            <Button variant="danger" onClick={resetCart}>Vaciar Carrito</Button>
             </div>
           </Col>
         </Row>
@@ -66,7 +66,7 @@ const Cart = () => {
         <>
           <h2>Usted no tiene productos</h2>
           <Link to="/">
-            <button>Comprar ahora</button>
+            <Button variant="primary">Comprar ahora</Button>
           </Link>
         </>
       )}

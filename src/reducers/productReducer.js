@@ -9,7 +9,7 @@ const initialState={
 
 export const productReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_PRODUCTS:
+        case types.SET_PRODUCTS:
             return {
                 ...state,
                 products: action.payload,
@@ -17,19 +17,11 @@ export const productReducer = (state = initialState, action) => {
                 product:null,
                 loading:false
             }
-        case types.GET_PRODUCTS_FILTER:
-            const newProducts=state.products.filter(product=>product.category===action.payload.category)
-            return {
-                ...state,
-                productsFilter:newProducts,
-                product:null,
-                loading:false
-            }
-        case types.GET_PRODUCT_BY_ID:
-            const findProduct=state.products.find((product) => product.id === action.payload.idProduct)
+
+        case types.SET_PRODUCT:
             return{
                 ...state,
-                product:findProduct
+                product:action.payload
             }
         default:
            return state;

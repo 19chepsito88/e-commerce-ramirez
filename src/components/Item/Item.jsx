@@ -19,7 +19,7 @@ const ItemList = memo(({ id, name, picture, stock }) => {
         <Card.Footer>
           <NavLink to={`/detail/${id}`}>
             <button className="btn btn-outline-primary btn-block">
-              detalle
+              Ver detalle
             </button>
           </NavLink>
         </Card.Footer>
