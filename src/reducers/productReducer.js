@@ -4,7 +4,7 @@ const initialState={
     products:[],
     productsFilter:null,
     product:null,
-    loading:true
+    loading:true,
 }
 
 export const productReducer = (state = initialState, action) => {

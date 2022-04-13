@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
