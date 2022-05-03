@@ -1,22 +1,23 @@
 import { useContext } from "react";
-import { Col, Row } from "react-bootstrap";
 import { contextItemListContainer } from "../../container/itemListContainer/ItemListContainer";
 import Item from "../Item/Item";
+import Row  from "react-bootstrap/Row";
+import  Col from "react-bootstrap/Col";
+import './ItemList.css'
 
 const ItemList = () => {
   const { products } = useContext(contextItemListContainer);
   return (
     <Row className="row-container">
-      {products.map((item) => {
+      {products.map((product) => {
         return (
-          <Col md={3} key={item.id}>
+          <Col md={3} key={product.id}>
             <Item
-              id={item.id}
-              name={item.name}
-              picture={item.picture}
-              stock={item.stock}
-              precio={item.precio}
-              description={item.description}
+              id={product.id}
+              name={product.name}
+              picture={product.picture}
+              stock={product.stock}
+              description={product.description}
             />
           </Col>
         );

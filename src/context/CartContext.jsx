@@ -1,42 +1,25 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addToCart, removeCart, removeItem } from "../actions/products";
 
 const CartContext = createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
 
-function CartContextProvider({ children }) {
-  const [cartList, setCartList] = useState([]);
-
-  const addToCart = (item) => {
-    const findItem = cartList.find((product) => product.id === item.id);
-    if (findItem) {
-      findItem.cantidad = item.cantidad + findItem.cantidad;
-    } else {
-      setCartList([...cartList, item]);
-    }
+function CartContextProvider({
+  children,
+  addToCart,
+  removeCart,
+  removeItem,
+  cartList,
+}) {
+  const totalPrice = () => {
+    return cartList.reduce((tot, valor) => tot + valor.amount * valor.price, 0);
   };
 
-  const removeCart = () => {
-    setCartList([]);
-  };
-
-  const removeItem = (itemId) => {
-    const filterCartList = cartList.filter((element) => element.id != itemId);
-    setCartList(filterCartList);
-  };
-
-  const totalCompra = () => {
-    return cartList.reduce(
-      (tot, valor) => tot + valor.cantidad * valor.precio,
-      0
-    );
-  };
-
-  const cantidadProductos = () => {
-    return cartList.reduce(
-      (tot, valor) => tot + valor.cantidad,
-      0
-    );
+  const totalProducts = () => {
+    return cartList.reduce((tot, valor) => tot + valor.amount, 0);
   };
 
   return (
@@ -46,8 +29,8 @@ function CartContextProvider({ children }) {
         addToCart,
         removeCart,
         removeItem,
-        totalCompra,
-        cantidadProductos,
+        totalPrice,
+        totalProducts,
       }}
     >
       {children}
@@ -55,4 +38,21 @@ function CartContextProvider({ children }) {
   );
 }
 
-export default CartContextProvider;
+const mapStateToProps = (state) => ({
+  cartList: state.products.cartList,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      addToCart,
+      removeCart,
+      removeItem,
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartContextProvider);

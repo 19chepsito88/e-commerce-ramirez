@@ -4,13 +4,28 @@
     justify-content: space-between;
 }
 
-.btn-counter{
-    background-color: green;
-    font-size: 14px;
+.card-product {
+    margin-top: 15px;
+    padding: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.btn-counter:hover{
-    background-color: blue;
+.card-product-image {
+    height: 300px;
+}
+
+.card-product-body {
+    color: rgb(17, 3, 3);
+    font: bold 18px Montserrat;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-image: url(../../images/69adc4a1c63f959ede0dd4c1caa10cce.jpg);
+}
+
+.item-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .card-image-product{

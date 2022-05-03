@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import  Card  from "react-bootstrap/Card";
 import "./Item.css";
 
 const ItemList = memo(({ id, name, picture, stock }) => {
@@ -10,7 +10,7 @@ const ItemList = memo(({ id, name, picture, stock }) => {
         <Card.Img
           className="card-product-image"
           variant="top"
-          src={require(`../../images/${picture}.jpg`)}
+          src={picture}
         />
         <Card.Body className="card-product-body">
           <Card.Title className="item-name">{name}</Card.Title>

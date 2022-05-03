@@ -1,10 +1,10 @@
-import React from "react";
-import { useCounter } from "../hooks/useCounter";
-import { ReactComponent as UpIcon } from "./Icons/up.svg";
-import { ReactComponent as DownIcon } from "./Icons/down.svg";
-import { Button } from "react-bootstrap";
+import { useCounter } from "../../hooks/useCounter";
+import { ReactComponent as UpIcon } from "../Icons/up.svg";
+import { ReactComponent as DownIcon } from "../Icons/down.svg";
+import Button from "react-bootstrap/Button";
+import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial,onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   const { counter, increment, decrement, reset } = useCounter(initial);
 
   const disable = counter > stock;
@@ -16,9 +16,9 @@ const ItemCount = ({ stock, initial,onAdd }) => {
     counter > 1 && decrement(1);
   };
 
-  const onClickAdd=()=>{
-    onAdd(counter)
-  }
+  const onClickAdd = () => {
+    onAdd(counter);
+  };
 
   return (
     <div className="item-count-container">

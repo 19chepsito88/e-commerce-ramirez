@@ -1,14 +1,22 @@
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getMenuItems } from "../../actions/menuItems";
+import CartWidget from "./CartWidget";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
-import { useCartContext } from "../../context/CartContext";
-import CartWidget from "./CartWidget";
 import "./NavBar.css";
 
-const NavBar = ({ menuItems }) => {
-  const { cantidadProductos } = useCartContext();
-  const total = cantidadProductos();
+const NavBar = ({ getMenuItems, menuItems }) => {
+  useEffect(() => {
+    getMenuItems();
+  }, []);
+
+  const { totalProducts } = useCartContext();
+  const total = totalProducts();
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -35,11 +43,23 @@ const NavBar = ({ menuItems }) => {
           <NavLink to="cart">
             <CartWidget />
           </NavLink>
-          {total > 0 && <div className="container-cantidad ">{total}</div>}
+          {total > 0 && <div className="container-amount ">{total}</div>}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+  menuItems: state.menu.menuItems,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getMenuItems,
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -3,7 +3,6 @@ import './styles/ecomerce.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { ITEMS } from './Constants/menuItems';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './container/itemListContainer/ItemListContainer';
 import Cart from './components/Cart/Cart';
@@ -16,9 +15,7 @@ function App() {
     <Provider store={store}>
       <CartContextProvider>
         <BrowserRouter>
-          <NavBar
-            menuItems={ITEMS}
-          />
+          <NavBar/>
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:categoryId" element={<ItemListContainer />} />

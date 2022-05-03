@@ -1,3 +1,19 @@
+.logo-store{
+    width: 135px;
+    height: 48px;
+    margin-left: -70px;
+}
+
+.container-amount{
+    margin-left: 15px;
+    padding: 2px;
+    border-radius: 2px;
+    text-decoration: none !important;
+    list-style: none;
+    color: white;
+    background-color: red;
+}
+
 .container-shopp-car{
     display: flex;
     justify-content: center;

@@ -1,23 +1,18 @@
-import React, { useEffect } from "react";
-import ItemList from "../../components/ItemList/ItemList";
-import { Container, Spinner } from "react-bootstrap";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getproducts, getProductFilter } from "../../actions/products";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { createContext } from "react";
+import { getproducts } from "../../actions/products";
+import ItemList from "../../components/ItemList/ItemList";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 export const contextItemListContainer = createContext([]);
-const ItemListContainer = ({
-  products,
-  getproducts,
-  productsFilter,
-  getProductFilter,
-  loading,
-}) => {
+const ItemListContainer = ({ products, getproducts, loading }) => {
   const { categoryId } = useParams();
   useEffect(() => {
     if (categoryId) {
-      getProductFilter(categoryId);
+      getproducts(categoryId);
     } else {
       getproducts();
     }
@@ -26,7 +21,7 @@ const ItemListContainer = ({
   return (
     <contextItemListContainer.Provider
       value={{
-        products: productsFilter ? productsFilter : products,
+        products: products,
       }}
     >
       <Container fluid className={loading ? "text-center" : null}>
@@ -42,7 +37,6 @@ const ItemListContainer = ({
 
 const mapStateToProps = (state) => ({
   products: state.products.products,
-  productsFilter: state.products.productsFilter,
   loading: state.products.loading,
 });
 
@@ -50,7 +44,6 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       getproducts,
-      getProductFilter,
     },
     dispatch
   );

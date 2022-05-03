@@ -1,0 +1,11 @@
+.cart-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin: auto;
+}
+
+.input-form{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

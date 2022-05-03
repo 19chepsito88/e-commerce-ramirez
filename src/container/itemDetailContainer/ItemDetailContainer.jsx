@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { getProductById } from "../../actions/products";
-import ItemDetail from "../../components/itemDetail/ItemDetail";
-import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { getProductById } from "../../actions/products";
+import ItemDetail from "../../components/itemDetail/ItemDetail";
+import  Container from "react-bootstrap/Container";
+import Spinner  from "react-bootstrap/Spinner";
 
 const ItemDetailContainer = ({ product, getProductById }) => {
   const { detailId } = useParams();
@@ -13,7 +14,7 @@ const ItemDetailContainer = ({ product, getProductById }) => {
     getProductById(detailId);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 3000);
   }, []);
 
   return (
